@@ -208,6 +208,35 @@
     padding: 40px 20px; font-size: 16px; border-top: 4px solid var(--line);
   }
   footer strong { color: var(--gold); }
+  footer .fine { font-size: 14px; margin: 8px 0 0; opacity: .85; }
+  .fine-print { max-width: 640px; margin: 18px auto 0; font-size: 12px; opacity: .6; text-align: left; }
+  .fine-print summary { cursor: pointer; text-align: center; }
+  .fine-print p { margin: 8px 0 0; }
+  .linkish {
+    font: inherit; color: inherit; background: none; border: 0; padding: 0;
+    text-decoration: underline; cursor: pointer;
+  }
+
+  /* Secret 25th door */
+  .egg {
+    font: inherit; background: none; border: 0; padding: 0; cursor: pointer;
+    display: inline-block;
+  }
+  .egg:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; border-radius: 8px; }
+  .egg.found { animation: wiggle .6s ease; }
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(0); }
+    25% { transform: rotate(-18deg) scale(1.2); }
+    75% { transform: rotate(14deg) scale(1.2); }
+  }
+  .bonus { margin-top: 18px; }
+  .bonus-title { font-family: "Archivo Black", Impact, sans-serif; font-size: 20px; }
+  .bonus-inside {
+    margin-top: 12px; padding: 22px 24px;
+    background: var(--card); border: 3px solid var(--line); border-radius: 14px; box-shadow: 6px 6px 0 var(--line);
+  }
+  .bonus-inside p { margin: 0 0 12px; }
+
 
   @media (max-width: 680px) {
     body { font-size: 17px; }
@@ -227,6 +256,7 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .btn, .door .front { transition: none; }
+    .egg.found { animation: none; }
   }
 </style>
 </head>
@@ -238,6 +268,7 @@
     <h1>Jesse's<br>Christmas List</h1>
     <p class="greeting">Hi <span class="js-name">Family</span>!</p>
     <p>Here's everything I'm hoping for this year, all in one place. Open a door on the advent calendar below to see each gift.</p>
+    <p>This is a list of suggestions, not an invoice. I feel weird.</p>
   </div>
 </header>
 
@@ -252,6 +283,7 @@
     <li><a href="#sewing">🧵 Sewing</a></li>
     <li><a href="#pottery">🏺 Pottery</a></li>
     <li><a href="#climbing">🧗 Climbing</a></li>
+    <li><a href="#skis">⛷️ Skiing</a></li>
     <li><a href="#food">🍫 Treats</a></li>
     <li><a href="#lego">🧱 LEGO</a></li>
     <li><a href="#tattoos">🖋️ Family tattoos</a></li>
@@ -260,7 +292,7 @@
 
 <section class="picks">
   <div class="wrap">
-    <h2 class="section-label">Open a door 🎄</h2>
+    <h2 class="section-label">Open a door <button type="button" class="egg" id="egg" aria-controls="bonus" aria-expanded="false" aria-label="Secret door">🎄</button></h2>
     <div class="advent">
       <a class="door" href="#shoes" aria-label="Door 1: Running shoes"><span class="inside"><span class="e">👟</span>Running shoes</span><span class="front"><span class="star">★ TOP</span><span class="n">1</span></span></a>
       <a class="door" href="#jacket" aria-label="Door 2: Nano Puff"><span class="inside"><span class="e">🧥</span>Nano Puff</span><span class="front"><span class="star">★ TOP</span><span class="n">2</span></span></a>
@@ -279,13 +311,24 @@
       <a class="door" href="#rotary" aria-label="Door 15: Rotary cutter"><span class="inside"><span class="e">🧵</span>Rotary cutter</span><span class="front"><span class="n">15</span></span></a>
       <a class="door" href="#pottery" aria-label="Door 16: Pottery"><span class="inside"><span class="e">🏺</span>Pottery</span><span class="front"><span class="n">16</span></span></a>
       <a class="door" href="#climbing" aria-label="Door 17: Harness"><span class="inside"><span class="e">🧗</span>Harness</span><span class="front"><span class="n">17</span></span></a>
-      <a class="door" href="#food" aria-label="Door 18: Hot chocolate"><span class="inside"><span class="e">☕</span>Hot chocolate</span><span class="front"><span class="n">18</span></span></a>
-      <a class="door" href="#chocolate" aria-label="Door 19: Chocolate"><span class="inside"><span class="e">🍫</span>Chocolate</span><span class="front"><span class="n">19</span></span></a>
-      <a class="door" href="#honey" aria-label="Door 20: Honey"><span class="inside"><span class="e">🍯</span>Honey</span><span class="front"><span class="n">20</span></span></a>
+      <a class="door" href="#skis" aria-label="Door 18: Skis"><span class="inside"><span class="e">⛷️</span>Skis</span><span class="front"><span class="n">18</span></span></a>
+      <a class="door" href="#ski-boots" aria-label="Door 19: Ski boots"><span class="inside"><span class="e">🥾</span>Ski boots</span><span class="front"><span class="n">19</span></span></a>
+      <a class="door" href="#food" aria-label="Door 20: Chocolate &amp; honey"><span class="inside"><span class="e">🍫</span>Chocolate &amp; honey</span><span class="front"><span class="n">20</span></span></a>
       <a class="door" href="#sauces" aria-label="Door 21: Sauces"><span class="inside"><span class="e">🥫</span>Sauces</span><span class="front"><span class="n">21</span></span></a>
       <a class="door" href="#spices" aria-label="Door 22: Spices"><span class="inside"><span class="e">🌶️</span>Spices</span><span class="front"><span class="n">22</span></span></a>
       <a class="door" href="#lego" aria-label="Door 23: LEGO"><span class="inside"><span class="e">🧱</span>LEGO</span><span class="front"><span class="n">23</span></span></a>
       <a class="door" href="#tattoos" aria-label="Door 24: Tattoos"><span class="inside"><span class="e">🖋️</span>Tattoos</span><span class="front"><span class="n">24</span></span></a>
+    </div>
+    <div class="bonus" id="bonus" hidden>
+      <div class="bonus-inside">
+        <p class="bonus-title">🎁 Door 25: you found the secret door</p>
+        <p>Honestly? You don't need to get me anything. You all do so much for me, and I appreciate every moment I get to spend with you. I'm doing my best to visit more, because I love the chances to be together.</p>
+        <p>I'd love to play a board game as a whole family or go for a walk together. Call me more often. Or give the money to charity: the Lambda Foundation is one I volunteer with and care about.</p>
+        <p><strong>The real gift for me is spending time with you all.</strong> ❤️</p>
+        <div class="links">
+          <a class="btn" href="https://lambdafoundation.org/" target="_blank" rel="noopener">Lambda Foundation</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -554,34 +597,46 @@
       </div>
     </article>
 
-    <article class="gift alt-cat" id="food">
-      <div class="badge-col"><div class="emoji">☕</div><div class="num">18</div></div>
+    <article class="gift alt-cat" id="skis">
+      <div class="badge-col"><div class="emoji">⛷️</div><div class="num">18</div></div>
       <div class="body">
-        <p class="kicker">Treats</p>
-        <h2>Hot chocolate</h2>
-        <p>Always welcome on a cold day.</p>
+        <p class="kicker">Skiing</p>
+        <h2>Cross-country skis</h2>
+        <p>Classic cross-country skis from Decathlon.</p>
+        <dl class="details">
+          <div><dt>Style:</dt> <dd>Classic</dd></div>
+        </dl>
+        <div class="links">
+          <a class="btn" href="https://www.decathlon.ca/en/sports/winter-sports/cross-country-skis-classic" target="_blank" rel="noopener">Decathlon classic skis</a>
+        </div>
       </div>
     </article>
 
-    <article class="gift alt-cat" id="chocolate">
-      <div class="badge-col"><div class="emoji">🍫</div><div class="num">19</div></div>
+    <article class="gift alt-cat" id="ski-boots">
+      <div class="badge-col"><div class="emoji">🥾</div><div class="num">19</div></div>
       <div class="body">
-        <p class="kicker">Treats</p>
-        <h2>Fancy chocolate</h2>
-        <p>A nice bar or box of good chocolate.</p>
+        <p class="kicker">Skiing</p>
+        <h2>Cross-country ski boots</h2>
+        <p>Boots to go with the skis.</p>
+        <dl class="details">
+          <div><dt>Size:</dt> <dd>Men's 10.5 shoe</dd></div>
+        </dl>
+        <div class="links">
+          <a class="btn" href="https://www.decathlon.ca/en/sports/winter-sports/cross-country-ski-boots" target="_blank" rel="noopener">Decathlon ski boots</a>
+        </div>
       </div>
     </article>
 
-    <article class="gift alt-cat" id="honey">
-      <div class="badge-col"><div class="emoji">🍯</div><div class="num">20</div></div>
+    <article class="gift" id="food">
+      <div class="badge-col"><div class="emoji">🍫</div><div class="num">20</div></div>
       <div class="body">
         <p class="kicker">Treats</p>
-        <h2>Honey</h2>
-        <p>A jar of good honey.</p>
+        <h2>Chocolate and honey</h2>
+        <p>Hot chocolate, a nice bar or box of fancy chocolate, and a jar of good honey.</p>
       </div>
     </article>
 
-    <article class="gift alt-cat" id="sauces">
+    <article class="gift" id="sauces">
       <div class="badge-col"><div class="emoji">🥫</div><div class="num">21</div></div>
       <div class="body">
         <p class="kicker">Treats</p>
@@ -590,7 +645,7 @@
       </div>
     </article>
 
-    <article class="gift alt-cat" id="spices">
+    <article class="gift" id="spices">
       <div class="badge-col"><div class="emoji">🌶️</div><div class="num">22</div></div>
       <div class="body">
         <p class="kicker">Treats</p>
@@ -599,7 +654,7 @@
       </div>
     </article>
 
-    <article class="gift" id="lego">
+    <article class="gift alt-cat" id="lego">
       <div class="badge-col"><div class="emoji">🧱</div><div class="num">23</div></div>
       <div class="body">
         <p class="kicker">LEGO</p>
@@ -615,7 +670,7 @@
       </div>
     </article>
 
-    <article class="gift alt-cat" id="tattoos">
+    <article class="gift" id="tattoos">
       <div class="badge-col"><div class="emoji">🖋️</div><div class="num">24</div></div>
       <div class="body">
         <p class="kicker">Family</p>
@@ -629,7 +684,18 @@
 
 <footer>
   <p>Thank you, <strong class="js-name">Family</strong>. Love you! ❤️🎄</p>
+  <p class="fine">
+    <button type="button" class="linkish" id="unsubscribe">Unsubscribe from Jesse's wants</button>
+  </p>
+  <p class="fine" id="unsubscribe-msg" role="status" hidden>Nice try. See you at Christmas. 🎄</p>
+  <details class="fine-print">
+    <summary>Fine print</summary>
+    <p>By reading this list, you acknowledge that Jesse feels mildly icky about making one. For Jesse, Christmas is about memories and time spent together, not the gifts.</p>
+    <p>That said, Jesse knows there's real joy in giving, so this list sticks to things that have already come up in conversation and hobbies Jesse actually does. These are items Jesse isn't likely to buy for themselves. Jesse has thought about asking for no gifts, or for donations instead, but that takes away the fun of watching someone open something you picked out for them.</p>
+    <p>Then again, does a pre-approved list really do that either? Unclear. Jesse has spent years muddling over this without landing on a clear answer, and dreads being asked for a list of wants and desires every year. Something about it just doesn't feel right. So this year, Jesse is giving in and going with it.</p>
+  </details>
 </footer>
+
 
 <script>
   // Who the page greets. A link like yoursite.com/?for=justin always wins.
@@ -694,6 +760,22 @@
         document.querySelector(door.hash).scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
       }, wasOpen || reduceMotion ? 0 : 700);
     });
+  });
+
+  // Easter egg: the tree in "Open a door" reveals a secret 25th door.
+  const egg = document.getElementById("egg");
+  const bonus = document.getElementById("bonus");
+  egg.addEventListener("click", () => {
+    bonus.hidden = !bonus.hidden;
+    egg.setAttribute("aria-expanded", String(!bonus.hidden));
+    egg.classList.remove("found");
+    void egg.offsetWidth;
+    egg.classList.add("found");
+    if (!bonus.hidden) bonus.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "nearest" });
+  });
+
+  document.getElementById("unsubscribe").addEventListener("click", () => {
+    document.getElementById("unsubscribe-msg").hidden = false;
   });
 
   guessPerson().then(greet);
