@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jesse's Christmas List</title>
+<meta name="description" content="Gift ideas for Jesse, Christmas 2026.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎁</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #d7263d;
+    --green: #0b6e4f;
+    --cream: #fff8ec;
+    --ink: #161616;
+    --gold: #f2b134;
+    --muted: #5c5c5c;
+    --card: #ffffff;
+    --line: #161616;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+  a { color: inherit; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    background: var(--red);
+    color: var(--cream);
+    padding: 64px 20px 72px;
+    border-bottom: 4px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: "";
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,.18) 2px, transparent 2px);
+    background-size: 28px 28px;
+    pointer-events: none;
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; position: relative; z-index: 1; }
+  .eyebrow {
+    display: inline-block;
+    background: var(--gold); color: var(--ink);
+    font-weight: 800; font-size: 14px; letter-spacing: .08em; text-transform: uppercase;
+    padding: 6px 12px; border: 3px solid var(--line); border-radius: 999px;
+    box-shadow: 3px 3px 0 var(--line);
+  }
+  h1 {
+    font-family: "Archivo Black", Impact, sans-serif;
+    font-size: clamp(44px, 9vw, 104px);
+    line-height: .95; margin: 20px 0 16px; letter-spacing: -.02em;
+  }
+  .hero p { font-size: clamp(18px, 2.4vw, 22px); max-width: 640px; margin: 0 0 12px; }
+  .hero .greeting { font-weight: 800; font-size: clamp(22px, 3vw, 28px); }
+
+
+  /* ---------- Sticky nav ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--ink);
+    border-bottom: 4px solid var(--line);
+  }
+  nav ul {
+    list-style: none; margin: 0 auto; padding: 12px 16px;
+    max-width: 1040px;
+    display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none;
+  }
+  nav ul::-webkit-scrollbar { display: none; }
+  nav a {
+    display: inline-flex; align-items: center; gap: 6px;
+    white-space: nowrap; text-decoration: none;
+    color: var(--cream); font-weight: 600; font-size: 15px;
+    padding: 8px 14px; border-radius: 999px; border: 2px solid #3a3a3a;
+  }
+  nav a:hover, nav a:focus-visible { background: var(--gold); color: var(--ink); border-color: var(--gold); outline: none; }
+
+  /* ---------- Top picks ---------- */
+  .picks { padding: 48px 20px 8px; }
+  .section-label {
+    font-family: "Archivo Black", Impact, sans-serif;
+    font-size: clamp(26px, 4vw, 36px); margin: 0 0 8px;
+  }
+  .picks .section-label { margin-bottom: 20px; }
+
+  /* ---------- Advent calendar ---------- */
+  .advent {
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px;
+    background: var(--green); padding: 18px;
+    border: 3px solid var(--line); border-radius: 20px; box-shadow: 8px 8px 0 var(--line);
+  }
+  .door {
+    position: relative; display: block; aspect-ratio: 1 / 1;
+    perspective: 900px; text-decoration: none; color: inherit;
+  }
+  .door .inside, .door .front {
+    position: absolute; inset: 0; border: 3px solid var(--line); border-radius: 12px;
+  }
+  .door .inside {
+    background: var(--ink); color: var(--cream);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 6px; padding: 8px; text-align: center;
+    font-weight: 800; font-size: 15px; line-height: 1.2;
+  }
+  .door .inside .e { font-size: 40px; line-height: 1; }
+  .door .front {
+    display: flex; align-items: center; justify-content: center;
+    background-color: var(--red); color: var(--cream);
+    background-image: radial-gradient(rgba(255,255,255,.2) 2px, transparent 2px);
+    background-size: 18px 18px;
+    box-shadow: 4px 4px 0 var(--line);
+    transform-origin: left center;
+    transition: transform .65s cubic-bezier(.3,.7,.3,1);
+  }
+  .door:nth-child(4n+4) .front { background-color: #2e9c6f; }
+  .door:nth-child(4n+2) .front { background-color: var(--gold); color: var(--ink); background-image: radial-gradient(rgba(0,0,0,.12) 2px, transparent 2px); }
+  .door:nth-child(4n+3) .front { background-color: var(--cream); color: var(--ink); background-image: radial-gradient(rgba(0,0,0,.08) 2px, transparent 2px); }
+  .door .n { font-family: "Archivo Black", Impact, sans-serif; font-size: clamp(34px, 6vw, 60px); line-height: 1; }
+  .door .front::after {
+    content: ""; position: absolute; right: 10px; top: 50%;
+    width: 10px; height: 10px; margin-top: -5px; border-radius: 50%;
+    background: var(--ink); border: 2px solid var(--cream);
+  }
+  .door .star {
+    position: absolute; top: 6px; right: 6px;
+    background: var(--ink); color: var(--gold);
+    font-size: 11px; font-weight: 800; letter-spacing: .05em;
+    padding: 2px 7px; border-radius: 999px;
+  }
+  .door:hover, .door:focus-visible { z-index: 1; outline: none; }
+  .door:hover .front, .door:focus-visible .front { transform: rotateY(-24deg); }
+  .door:focus-visible .inside { outline: 4px solid var(--gold); outline-offset: 3px; }
+  .door.open { z-index: 2; }
+  .door.open .front { transform: rotateY(-100deg); }
+
+  /* ---------- Gift cards ---------- */
+  main { padding: 40px 20px 64px; }
+  .gift {
+    background: var(--card);
+    border: 3px solid var(--line); border-radius: 20px;
+    box-shadow: 8px 8px 0 var(--line);
+    margin: 0 0 36px; overflow: hidden;
+    display: grid; grid-template-columns: 180px 1fr;
+  }
+  .gift .badge-col {
+    background: var(--green); color: var(--cream);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 8px; padding: 24px 12px; border-right: 3px solid var(--line);
+    text-align: center;
+  }
+  .gift.alt-cat .badge-col { background: var(--red); }
+  .gift .emoji { font-size: 64px; line-height: 1; }
+  .gift .num { font-family: "Archivo Black", sans-serif; font-size: 14px; letter-spacing: .1em; opacity: .85; }
+  .gift .body { padding: 28px 28px 30px; min-width: 0; }
+  .gift h2 {
+    font-family: "Archivo Black", Impact, sans-serif;
+    font-size: clamp(28px, 4vw, 40px); line-height: 1.05; margin: 0 0 10px;
+  }
+  .gift .kicker { font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 4px; }
+  .gift h3 { font-size: 20px; margin: 22px 0 8px; }
+  .gift p { margin: 0 0 14px; }
+  .details {
+    background: var(--cream); border: 2px dashed var(--line); border-radius: 12px;
+    padding: 12px 16px; margin: 0 0 18px; font-size: 16px;
+  }
+  .details dt { font-weight: 800; display: inline; }
+  .details dd { display: inline; margin: 0; }
+  .details div + div { margin-top: 4px; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    text-decoration: none; font-weight: 800; font-size: 16px;
+    padding: 12px 18px; border-radius: 12px;
+    border: 3px solid var(--line); background: var(--gold); color: var(--ink);
+    box-shadow: 4px 4px 0 var(--line);
+    transition: transform .1s, box-shadow .1s;
+  }
+  .btn:hover, .btn:focus-visible { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--line); outline: none; }
+  .btn:active { transform: translate(2px,2px); box-shadow: 1px 1px 0 var(--line); }
+  .btn.alt { background: #fff; }
+  .btn::after { content: "↗"; font-size: 14px; }
+  .btn.local::after { content: "📍"; }
+
+  /* Book list */
+  .books { list-style: none; padding: 0; margin: 0 0 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+  .books a {
+    display: flex; flex-direction: column; height: 100%;
+    text-decoration: none; padding: 14px 16px;
+    background: var(--cream); border: 2px solid var(--line); border-radius: 12px;
+  }
+  .books a:hover, .books a:focus-visible { background: #ffeec8; outline: none; }
+  .books strong { font-size: 16px; line-height: 1.3; }
+  .books span { font-size: 14px; color: var(--muted); margin-top: 4px; }
+  .books em { font-style: normal; font-weight: 800; font-size: 13px; margin-top: auto; padding-top: 8px; }
+
+  footer {
+    background: var(--ink); color: var(--cream); text-align: center;
+    padding: 40px 20px; font-size: 16px; border-top: 4px solid var(--line);
+  }
+  footer strong { color: var(--gold); }
+
+  @media (max-width: 680px) {
+    body { font-size: 17px; }
+    .hero { padding: 44px 16px 52px; }
+    .picks, main { padding-left: 16px; padding-right: 16px; }
+    .advent { grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 12px; box-shadow: 5px 5px 0 var(--line); }
+    .door .inside { font-size: 12px; padding: 4px; }
+    .door .inside .e { font-size: 32px; }
+    .door .star { font-size: 9px; padding: 1px 5px; top: 4px; right: 4px; }
+    .door .front::after { width: 8px; height: 8px; margin-top: -4px; right: 7px; }
+    .gift { grid-template-columns: 1fr; box-shadow: 5px 5px 0 var(--line); }
+    .gift .badge-col { flex-direction: row; justify-content: flex-start; padding: 14px 20px; border-right: 0; border-bottom: 3px solid var(--line); }
+    .gift .emoji { font-size: 40px; }
+    .gift .body { padding: 22px 20px 24px; }
+    .btn { flex: 1 1 100%; justify-content: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn, .door .front { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">🎄 Christmas 2026</span>
+    <h1>Jesse's<br>Christmas List</h1>
+    <p class="greeting">Hi <span class="js-name">Family</span>!</p>
+    <p>Here's everything I'm hoping for this year, all in one place. Open a door on the advent calendar below to see each gift.</p>
+  </div>
+</header>
+
+<nav aria-label="Gift categories">
+  <ul>
+    <li><a href="#shoes">👟 Running shoes</a></li>
+    <li><a href="#jacket">🧥 Jackets</a></li>
+    <li><a href="#earrings">✨ Earrings</a></li>
+    <li><a href="#books">📚 Books</a></li>
+    <li><a href="#socks">🧦 Socks</a></li>
+    <li><a href="#bike">🚴 Biking</a></li>
+    <li><a href="#sewing">🧵 Sewing</a></li>
+    <li><a href="#pottery">🏺 Pottery</a></li>
+    <li><a href="#climbing">🧗 Climbing</a></li>
+    <li><a href="#food">🍫 Treats</a></li>
+    <li><a href="#tattoos">🖋️ Family tattoos</a></li>
+  </ul>
+</nav>
+
+<section class="picks">
+  <div class="wrap">
+    <h2 class="section-label">Open a door 🎄</h2>
+    <div class="advent">
+      <a class="door" href="#shoes" aria-label="Door 1: Running shoes"><span class="inside"><span class="e">👟</span>Running shoes</span><span class="front"><span class="star">★ TOP</span><span class="n">1</span></span></a>
+      <a class="door" href="#jacket" aria-label="Door 2: Nano Puff"><span class="inside"><span class="e">🧥</span>Nano Puff</span><span class="front"><span class="star">★ TOP</span><span class="n">2</span></span></a>
+      <a class="door" href="#torrentshell" aria-label="Door 3: Rain jacket"><span class="inside"><span class="e">🧥</span>Rain jacket</span><span class="front"><span class="star">★ TOP</span><span class="n">3</span></span></a>
+      <a class="door" href="#high-coast" aria-label="Door 4: Wind jacket"><span class="inside"><span class="e">🧥</span>Wind jacket</span><span class="front"><span class="n">4</span></span></a>
+      <a class="door" href="#x-latt" aria-label="Door 5: X-Lätt jacket"><span class="inside"><span class="e">🧥</span>X-Lätt jacket</span><span class="front"><span class="n">5</span></span></a>
+      <a class="door" href="#earrings" aria-label="Door 6: Gold hoops"><span class="inside"><span class="e">✨</span>Gold hoops</span><span class="front"><span class="star">★ TOP</span><span class="n">6</span></span></a>
+      <a class="door" href="#books" aria-label="Door 7: Books"><span class="inside"><span class="e">📚</span>Books</span><span class="front"><span class="n">7</span></span></a>
+      <a class="door" href="#socks" aria-label="Door 8: Darn Tough"><span class="inside"><span class="e">🧦</span>Darn Tough</span><span class="front"><span class="n">8</span></span></a>
+      <a class="door" href="#smartwool" aria-label="Door 9: Smartwool"><span class="inside"><span class="e">🧦</span>Smartwool</span><span class="front"><span class="n">9</span></span></a>
+      <a class="door" href="#bike" aria-label="Door 10: Power pedals"><span class="inside"><span class="e">🚴</span>Power pedals</span><span class="front"><span class="n">10</span></span></a>
+      <a class="door" href="#garmin" aria-label="Door 11: Bike computer"><span class="inside"><span class="e">🚴</span>Bike computer</span><span class="front"><span class="n">11</span></span></a>
+      <a class="door" href="#frame-bag" aria-label="Door 12: Frame bag"><span class="inside"><span class="e">🚴</span>Frame bag</span><span class="front"><span class="n">12</span></span></a>
+      <a class="door" href="#jersey" aria-label="Door 13: Bike jersey"><span class="inside"><span class="e">🚴</span>Bike jersey</span><span class="front"><span class="n">13</span></span></a>
+      <a class="door" href="#bibs" aria-label="Door 14: Bib shorts"><span class="inside"><span class="e">🚴</span>Bib shorts</span><span class="front"><span class="n">14</span></span></a>
+      <a class="door" href="#sewing" aria-label="Door 15: Fabric shears"><span class="inside"><span class="e">🧵</span>Fabric shears</span><span class="front"><span class="n">15</span></span></a>
+      <a class="door" href="#rotary" aria-label="Door 16: Rotary cutter"><span class="inside"><span class="e">🧵</span>Rotary cutter</span><span class="front"><span class="n">16</span></span></a>
+      <a class="door" href="#pottery" aria-label="Door 17: Pottery"><span class="inside"><span class="e">🏺</span>Pottery</span><span class="front"><span class="n">17</span></span></a>
+      <a class="door" href="#climbing" aria-label="Door 18: Harness"><span class="inside"><span class="e">🧗</span>Harness</span><span class="front"><span class="n">18</span></span></a>
+      <a class="door" href="#food" aria-label="Door 19: Hot chocolate"><span class="inside"><span class="e">☕</span>Hot chocolate</span><span class="front"><span class="n">19</span></span></a>
+      <a class="door" href="#chocolate" aria-label="Door 20: Chocolate"><span class="inside"><span class="e">🍫</span>Chocolate</span><span class="front"><span class="n">20</span></span></a>
+      <a class="door" href="#honey" aria-label="Door 21: Honey"><span class="inside"><span class="e">🍯</span>Honey</span><span class="front"><span class="n">21</span></span></a>
+      <a class="door" href="#sauces" aria-label="Door 22: Sauces"><span class="inside"><span class="e">🥫</span>Sauces</span><span class="front"><span class="n">22</span></span></a>
+      <a class="door" href="#spices" aria-label="Door 23: Spices"><span class="inside"><span class="e">🌶️</span>Spices</span><span class="front"><span class="n">23</span></span></a>
+      <a class="door" href="#tattoos" aria-label="Door 24: Tattoos"><span class="inside"><span class="e">🖋️</span>Tattoos</span><span class="front"><span class="n">24</span></span></a>
+    </div>
+  </div>
+</section>
+
+<main>
+  <div class="wrap">
+
+    <article class="gift" id="shoes">
+      <div class="badge-col"><div class="emoji">👟</div><div class="num">01</div></div>
+      <div class="body">
+        <p class="kicker">Running shoes</p>
+        <h2>Running shoes</h2>
+        <p>I really need new running shoes, and I always cheap out on them. A gift card to a specialty running store is best, so I can get properly fitted.</p>
+        <dl class="details">
+          <div><dt>Size:</dt> <dd>Men's 10.5 (but a fitting is better than guessing)</dd></div>
+          <div><dt>Best option:</dt> <dd>Gift card to a running store with a gait/fit assessment</dd></div>
+        </dl>
+        <div class="links">
+          <a class="btn" href="https://ca.shop.runningroom.com/" target="_blank" rel="noopener">Running Room</a>
+          <a class="btn alt" href="https://www.sportsexperts.ca/en-CA/" target="_blank" rel="noopener">Sports Experts</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="gift alt-cat" id="jacket">
+      <div class="badge-col"><div class="emoji">🧥</div><div class="num">02</div></div>
+      <div class="body">
+        <p class="kicker">Jackets</p>
+        <h2>Patagonia Nano Puff Jacket</h2>
+        <p>Dad and I got a down jacket from REI ten years ago. It's worn out and leaves a trail of feathers wherever I walk. This is my first choice to replace it.</p>
+        <dl class="details">
+          <div><dt>Size:</dt> <dd>Men's Small</dd></div>
+        </dl>
+        <div class="links">
+          <a class="btn" href="https://www.patagonia.ca/product/mens-nano-puff-insulated-jacket/84213.html?dwvar_84213_color=WSTO" target="_blank" rel="noopener">Patagonia Nano Puff</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="gift alt-cat" id="torrentshell">
+      <div class="badge-col"><div class="emoji">🧥</div><div class="num">03</div></div>
+      <div class="body">
+        <p class="kicker">Jackets</p>
+        <h2>Patagonia Torrentshell 3L Rain Jacket</h2>
+        <p>The rain jacket Dad and I got from REI at the same time is worn out too. This is the one I'd replace it with.</p>
+        <dl class="details">
+          <div><dt>Size:</dt> <dd>Men's Small</dd></div>
+        </dl>
+        <div class="links">
+          <a class="btn" href="https://www.patagonia.ca/product/mens-torrentshell-3-layer-rain-jacket/85241.html?dwvar_85241_color=WSTO" target="_blank" rel="noopener">Patagonia Torrentshell</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="gift alt-cat" id="high-coast">
+      <div class="badge-col"><div class="emoji">🧥</div><div class="num">04</div></div>
+      <div class="body">
+        <p class="kicker">Jackets</p>
+        <h2>Fjällräven High Coast Wind Jacket</h2>
+        <p>A light wind jacket, and a good alternative to the Patagonia ones.</p>
+        <dl class="details">
+          <div><dt>Size:</dt> <dd>Men's Small</dd></div>
+        </dl>
+        <div class="links">
+          <a class="btn" href="https://www.fjallraven.com/ca/en-ca/men/jackets/wind-jacketswind-jackets/high-coast-wind-jacket-m/?v=F82606::7323451157189" target="_blank" rel="noopener">Fjällräven High Coast Wind</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="gift alt-cat" id="x-latt">
+      <div class="badge-col"><div class="emoji">🧥</div><div class="num">05</div></div>
+      <div class="body">
+        <p class="kicker">Jackets</p>
+        <h2>Fjällräven Expedition X-Lätt Jacket</h2>
+        <p>Another good alternative to the Patagonia jackets.</p>
+        <dl class="details">
+          <div><dt>Size:</dt> <dd>Men's Small</dd></div>
+        </dl>
+        <div class="links">
+          <a class="btn" href="https://www.fjallraven.com/ca/en-ca/men/jackets/trekking-jackets/expedition-x-latt-jacket-m/" target="_blank" rel="noopener">Fjällräven Expedition X-Lätt</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="gift" id="earrings">
+      <div class="badge-col"><div class="emoji">✨</div><div class="num">06</div></div>
+      <div class="body">
+        <p class="kicker">Earrings</p>
+        <h2>Gold hoop earrings</h2>
+        <p>Some new small gold hoops, about 1&nbsp;cm across.</p>
+        <dl class="details">
+          <div><dt>The pair:</dt> <dd>Mejuri Small Hoops in 10k Yellow Gold</dd></div>
+          <div><dt>Size:</dt> <dd>About 1 cm (10 mm) diameter</dd></div>
+        </dl>
+        <div class="links">
+          <a class="btn" href="https://mejuri.com/ca/en/products/small-hoops?Material=10k+Yellow+Gold" target="_blank" rel="noopener">Mejuri Small Hoops</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="gift alt-cat" id="books">
+      <div class="badge-col"><div class="emoji">📚</div><div class="num">07</div></div>
+      <div class="body">
+        <p class="kicker">Books</p>
+        <h2>Books</h2>
+        <p>I mostly read non-fiction. Here's what's on my list right now. A gift card to <strong>Pulp Books on Wellington in Verdun</strong> is always great, and they can order any of these too.</p>
+        <ul class="books">
+          <li><a href="https://www.amazon.ca/dp/1968679049/" target="_blank" rel="noopener"><strong>Twice As Good</strong><span>Joey Savoie</span><em>View ↗</em></a></li>
+          <li><a href="https://www.amazon.ca/dp/0593805054/" target="_blank" rel="noopener"><strong>The Cauldron: The Making of the Modern Middle East</strong><span>Simon Sebag Montefiore</span><em>View ↗</em></a></li>
+          <li><a href="https://www.amazon.ca/dp/030747349X/" target="_blank" rel="noopener"><strong>Legacy of Violence: A History of the British Empire</strong><span>Caroline Elkins</span><em>View ↗</em></a></li>
+          <li><a href="https://www.amazon.ca/dp/0805080015/" target="_blank" rel="noopener"><strong>Imperial Reckoning: Britain's Gulag in Kenya</strong><span>Caroline Elkins</span><em>View ↗</em></a></li>
+          <li><a href="https://www.amazon.ca/dp/1639734147/" target="_blank" rel="noopener"><strong>The Golden Road: How Ancient India Transformed the World</strong><span>William Dalrymple</span><em>View ↗</em></a></li>
+          <li><a href="https://www.amazon.ca/dp/163557580X/" target="_blank" rel="noopener"><strong>The Anarchy: The East India Company</strong><span>William Dalrymple</span><em>View ↗</em></a></li>
+          <li><a href="https://www.amazon.ca/dp/1324089458/" target="_blank" rel="noopener"><strong>How to Not Know</strong><span>Simone Stolzoff</span><em>View ↗</em></a></li>
+          <li><a href="https://www.amazon.ca/dp/0593715136/" target="_blank" rel="noopener"><strong>Tiny Experiments</strong><span>Anne-Laure Le Cunff</span><em>View ↗</em></a></li>
+        </ul>
+        <div class="links">
+          <a class="btn" href="https://www.amazon.ca/hz/wishlist/ls/1VL8ODRBFTQKW" target="_blank" rel="noopener">Full Amazon list</a>
+          <a class="btn alt local" href="https://www.google.com/maps/search/?api=1&query=Pulp+Books+Wellington+Verdun+Montreal" target="_blank" rel="noopener">Pulp Books, Verdun</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="gift" id="socks">
+      <div class="badge-col"><div class="emoji">🧦</div><div class="num">08</div></div>
+      <div class="body">
+        <p class="kicker">Socks</p>
+        <h2>Darn Tough socks</h2>
+        <p>My favourite. A pair I got ten years ago is still going.</p>
+        <dl class="details">
+          <div><dt>Size:</dt> <dd>M/L (I wear a 10.5 shoe)</dd></div>
+        </dl>
+        <div class="links">
+          <a class="btn" href="https://darntough.com/" target="_blank" rel="noopener">Darn Tough</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="gift" id="smartwool">
+      <div class="badge-col"><div class="emoji">🧦</div><div class="num">09</div></div>
+      <div class="body">
+        <p class="kicker">Socks</p>
+        <h2>Smartwool socks</h2>
+        <p>Smartwool socks are great too.</p>
+        <dl class="details">
+          <div><dt>Size:</dt> <dd>M/L (I wear a 10.5 shoe)</dd></div>
+        </dl>
+        <div class="links">
+          <a class="btn" href="https://www.smartwool.com/" target="_blank" rel="noopener">Smartwool</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="gift alt-cat" id="bike">
+      <div class="badge-col"><div class="emoji">🚴</div><div class="num">10</div></div>
+      <div class="body">
+        <p class="kicker">Biking</p>
+        <h2>Favero Assioma power pedals</h2>
+        <p>Power pedals would make biking a lot more interesting.</p>
+        <dl class="details">
+          <div><dt>Model:</dt> <dd>Assioma UNO, Look Keo version (the exact one is linked below)</dd></div>
+        </dl>
+        <div class="links">
+          <a class="btn" href="https://www.amazon.ca/dp/B0FCXYF2LP/" target="_blank" rel="noopener">Assioma UNO pedals</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="gift alt-cat" id="garmin">
+      <div class="badge-col"><div class="emoji">🚴</div><div class="num">11</div></div>
+      <div class="body">
+        <p class="kicker">Biking</p>
+        <h2>Garmin bike computer</h2>
+        <p>My current bike computer doesn't sync well.</p>
+        <dl class="details">
+          <div><dt>Model:</dt> <dd>Garmin Edge series</dd></div>
+        </dl>
+        <div class="links">
+          <a class="btn" href="https://www.garmin.com/en-CA/c/sports-fitness/cycling-computers/" target="_blank" rel="noopener">Garmin Edge computers</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="gift alt-cat" id="frame-bag">
+      <div class="badge-col"><div class="emoji">🚴</div><div class="num">12</div></div>
+      <div class="body">
+        <p class="kicker">Biking</p>
+        <h2>Arkel Waterproof Frame Bag</h2>
+        <p>A frame bag for carrying things on rides.</p>
+        <dl class="details">
+          <div><dt>Size:</dt> <dd>Medium</dd></div>
+        </dl>
+        <div class="links">
+          <a class="btn" href="https://arkel.ca/collections/made-in-canada/products/waterproof-frame-bag" target="_blank" rel="noopener">Arkel frame bag</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="gift alt-cat" id="jersey">
+      <div class="badge-col"><div class="emoji">🚴</div><div class="num">13</div></div>
+      <div class="body">
+        <p class="kicker">Biking</p>
+        <h2>7mesh Ashlu Merino Jersey</h2>
+        <p>A short-sleeve merino cycling jersey.</p>
+        <dl class="details">
+          <div><dt>Colour:</dt> <dd>Dark Chocolate</dd></div>
+          <div><dt>Size:</dt> <dd>Men's Small</dd></div>
+        </dl>
+        <div class="links">
+          <a class="btn" href="https://7mesh.com/products/mens-ashlu-merino-jersey-short-sleeve-dark-chocolate" target="_blank" rel="noopener">7mesh Ashlu jersey</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="gift alt-cat" id="bibs">
+      <div class="badge-col"><div class="emoji">🚴</div><div class="num">14</div></div>
+      <div class="body">
+        <p class="kicker">Biking</p>
+        <h2>7mesh MK3 Bib Short</h2>
+        <p>Cycling bib shorts for longer rides.</p>
+        <dl class="details">
+          <div><dt>Colour:</dt> <dd>Black</dd></div>
+          <div><dt>Size:</dt> <dd>Men's Small</dd></div>
+        </dl>
+        <div class="links">
+          <a class="btn" href="https://7mesh.com/products/mens-mk3-bib-short-black" target="_blank" rel="noopener">7mesh MK3 bibs</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="gift" id="sewing">
+      <div class="badge-col"><div class="emoji">🧵</div><div class="num">15</div></div>
+      <div class="body">
+        <p class="kicker">Sewing</p>
+        <h2>Fabric shears</h2>
+        <p>Good fabric shears would make cutting fabric a lot easier. Gingher is a great brand.</p>
+        <div class="links">
+          <a class="btn" href="https://www.amazon.ca/s?k=gingher+fabric+shears" target="_blank" rel="noopener">Gingher shears</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="gift" id="rotary">
+      <div class="badge-col"><div class="emoji">🧵</div><div class="num">16</div></div>
+      <div class="body">
+        <p class="kicker">Sewing</p>
+        <h2>Rotary cutter and cutting mat</h2>
+        <p>A rotary cutter and a self-healing cutting mat to go with it.</p>
+        <div class="links">
+          <a class="btn" href="https://www.amazon.ca/s?k=rotary+cutter+self+healing+cutting+mat" target="_blank" rel="noopener">Rotary cutter + mat</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="gift alt-cat" id="pottery">
+      <div class="badge-col"><div class="emoji">🏺</div><div class="num">17</div></div>
+      <div class="body">
+        <p class="kicker">Pottery</p>
+        <h2>Pottery wheel classes</h2>
+        <p>Wheel classes at <strong>Atelier Forma</strong> in Montreal. They run multi-week wheel courses at two studios. A gift card or a course registration both work.</p>
+        <dl class="details">
+          <div><dt>Studios:</dt> <dd>6918 Fabre and 4561 St-Laurent</dd></div>
+        </dl>
+        <div class="links">
+          <a class="btn" href="https://atelierforma.ca/" target="_blank" rel="noopener">Atelier Forma</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="gift" id="climbing">
+      <div class="badge-col"><div class="emoji">🧗</div><div class="num">18</div></div>
+      <div class="body">
+        <p class="kicker">Climbing</p>
+        <h2>Climbing harness</h2>
+        <p>A rock climbing harness of my own. MEC has a good selection, and a gift card works well since harnesses are best tried on.</p>
+        <div class="links">
+          <a class="btn" href="https://www.mec.ca/en/products/climbing/climbing-gear/climbing-harnesses" target="_blank" rel="noopener">MEC climbing harnesses</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="gift alt-cat" id="food">
+      <div class="badge-col"><div class="emoji">☕</div><div class="num">19</div></div>
+      <div class="body">
+        <p class="kicker">Treats</p>
+        <h2>Hot chocolate</h2>
+        <p>Always welcome on a cold day.</p>
+      </div>
+    </article>
+
+    <article class="gift alt-cat" id="chocolate">
+      <div class="badge-col"><div class="emoji">🍫</div><div class="num">20</div></div>
+      <div class="body">
+        <p class="kicker">Treats</p>
+        <h2>Fancy chocolate</h2>
+        <p>A nice bar or box of good chocolate.</p>
+      </div>
+    </article>
+
+    <article class="gift alt-cat" id="honey">
+      <div class="badge-col"><div class="emoji">🍯</div><div class="num">21</div></div>
+      <div class="body">
+        <p class="kicker">Treats</p>
+        <h2>Honey</h2>
+        <p>A jar of good honey.</p>
+      </div>
+    </article>
+
+    <article class="gift alt-cat" id="sauces">
+      <div class="badge-col"><div class="emoji">🥫</div><div class="num">22</div></div>
+      <div class="body">
+        <p class="kicker">Treats</p>
+        <h2>Sauces</h2>
+        <p>Sauces to cook with or put on everything.</p>
+      </div>
+    </article>
+
+    <article class="gift alt-cat" id="spices">
+      <div class="badge-col"><div class="emoji">🌶️</div><div class="num">23</div></div>
+      <div class="body">
+        <p class="kicker">Treats</p>
+        <h2>Spices</h2>
+        <p>Spices or spice blends to cook with.</p>
+      </div>
+    </article>
+
+    <article class="gift" id="tattoos">
+      <div class="badge-col"><div class="emoji">🖋️</div><div class="num">24</div></div>
+      <div class="body">
+        <p class="kicker">Family</p>
+        <h2>Matching family tattoos</h2>
+        <p>I'd love for everyone in the family to get matching tattoos together. No shopping link for this one. Let's talk about it over the holidays! 😄</p>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<footer>
+  <p>Thank you, <strong class="js-name">Family</strong>. Love you! ❤️🎄</p>
+</footer>
+
+<script>
+  // Who the page greets. A link like yoursite.com/?for=justin always wins.
+  const PEOPLE = { parents: "Mom & Dad", justin: "Justin", grandma: "Grandma" };
+  const EVERYONE_ELSE = "Family";
+
+  // Otherwise, guess from the visitor's approximate location (looked up from their IP, no prompt).
+  // Towns match within radiusKm of the centre; countries match anywhere in that country.
+  const PLACES = [
+    { person: "parents", lat: 42.837, lon: -80.304, radiusKm: 35 }, // Simcoe, ON
+    { person: "grandma", lat: 43.325, lon: -79.799, radiusKm: 30 }, // Burlington, ON
+    { person: "justin", country: "GB" },                            // London, UK
+  ];
+
+  function distanceKm(lat1, lon1, lat2, lon2) {
+    const rad = d => d * Math.PI / 180;
+    const a = Math.sin(rad(lat2 - lat1) / 2) ** 2 +
+      Math.cos(rad(lat1)) * Math.cos(rad(lat2)) * Math.sin(rad(lon2 - lon1) / 2) ** 2;
+    return 6371 * 2 * Math.asin(Math.sqrt(a));
+  }
+
+  async function personFromLocation() {
+    try {
+      const res = await fetch("https://ipapi.co/json/", { signal: AbortSignal.timeout(4000) });
+      const here = await res.json();
+      const place = PLACES.find(p => p.country
+        ? p.country === here.country_code
+        : distanceKm(p.lat, p.lon, here.latitude, here.longitude) <= p.radiusKm);
+      return place ? place.person : null;
+    } catch (e) {
+      // Lookup blocked or offline: the UK time zone is still a good hint for Justin.
+      return Intl.DateTimeFormat().resolvedOptions().timeZone === "Europe/London" ? "justin" : null;
+    }
+  }
+
+  async function guessPerson() {
+    const fromLink = (new URLSearchParams(location.search).get("for") || "").toLowerCase();
+    if (PEOPLE[fromLink]) return fromLink;
+    return personFromLocation();
+  }
+
+  function greet(person) {
+    const name = PEOPLE[person] || EVERYONE_ELSE;
+    document.querySelectorAll(".js-name").forEach(el => { el.textContent = name; });
+  }
+
+  // Advent calendar: swing the door open, then jump to that gift.
+  // Opened doors are remembered in this browser only.
+  const OPENED_KEY = "opened-doors";
+  const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function openedDoors() {
+    try { return JSON.parse(localStorage.getItem(OPENED_KEY)) || []; } catch (e) { return []; }
+  }
+  document.querySelectorAll(".door").forEach(door => {
+    if (openedDoors().includes(door.hash)) door.classList.add("open");
+    door.addEventListener("click", e => {
+      e.preventDefault();
+      const wasOpen = door.classList.contains("open");
+      door.classList.add("open");
+      try { localStorage.setItem(OPENED_KEY, JSON.stringify([...new Set([...openedDoors(), door.hash])])); } catch (err) {}
+      setTimeout(() => {
+        document.querySelector(door.hash).scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+      }, wasOpen || reduceMotion ? 0 : 700);
+    });
+  });
+
+  guessPerson().then(greet);
+</script>
+
+</body>
+</html>
