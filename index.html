@@ -166,6 +166,12 @@
     font-family: "Archivo Black", Impact, sans-serif;
     font-size: clamp(28px, 4vw, 40px); line-height: 1.05; margin: 0 0 10px;
   }
+  .gift.new .badge-col { background: var(--gold); color: var(--ink); }
+  .tag {
+    display: inline-block; font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 999px; border: 2px solid var(--line); margin: 0 0 10px;
+    background: var(--gold); color: var(--ink);
+  }
   .gift .kicker { font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 4px; }
   .gift h3 { font-size: 20px; margin: 22px 0 8px; }
   .gift p { margin: 0 0 14px; }
@@ -274,6 +280,7 @@
 
 <nav aria-label="Gift categories">
   <ul>
+    <li><a href="#steam-controller">🎮 New: Steam Controller</a></li>
     <li><a href="#shoes">👟 Running shoes</a></li>
     <li><a href="#jacket">🧥 Jackets</a></li>
     <li><a href="#earrings">✨ Earrings</a></li>
@@ -335,6 +342,20 @@
 
 <main>
   <div class="wrap">
+
+    <!-- NEW IDEA: not part of the 24-door calendar -->
+    <article class="gift new" id="steam-controller">
+      <div class="badge-col"><div class="emoji">🎮</div><div class="num">NEW</div></div>
+      <div class="body">
+        <span class="tag">✨ New idea</span>
+        <p class="kicker">Gaming</p>
+        <h2>Steam Controller</h2>
+        <p>Valve's new Steam Controller, with trackpads and drift-resistant thumbsticks. It's been selling out quickly, so it may need a reservation on Steam.</p>
+        <div class="links">
+          <a class="btn" href="https://store.steampowered.com/hardware/steamcontroller" target="_blank" rel="noopener">Steam Controller</a>
+        </div>
+      </div>
+    </article>
 
     <article class="gift" id="shoes">
       <div class="badge-col"><div class="emoji">👟</div><div class="num">01</div></div>
